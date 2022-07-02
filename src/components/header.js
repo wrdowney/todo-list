@@ -19,6 +19,14 @@ function buildHeader() {
     headerAccounts.appendChild(logIn);
     header.appendChild(headerAccounts);
 
+    //mobile dropdown menu
+    let menu = document.createElement('a');
+    let menuImg = document.createElement('img');
+    menuImg.src = '/images/menu.svg';
+    menu.appendChild(menuImg);
+    menu.classList.add("menu-button");
+    header.appendChild(menu);
+
     return header;
 }
 

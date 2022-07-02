@@ -3,7 +3,6 @@
 function buildSidebar() {
     var sidebar = document.createElement('div');
     sidebar.classList.add("sidebar");
-    sidebar.classList.add("active");
     
     let todayContainer = document.createElement('div');
     todayContainer.classList.add("sidebar-container");
@@ -37,6 +36,12 @@ function buildSidebar() {
     addProject.appendChild(addProjectText);
     projects.appendChild(projectTitle);
     projects.appendChild(addProject);
+
+    // menu drops down on click
+    let menu = document.querySelector(".menu-button");
+    menu.addEventListener("click", () => {
+        sidebar.classList.toggle("active");
+    });
 
 
     sidebar.appendChild(todayContainer);

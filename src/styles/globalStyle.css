@@ -25,14 +25,16 @@ body {
 header {
     height: 2rem;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     padding: var(--padding-sm);
     background-color: var(--secondary-color);
-    width: 100%;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 header img{
-    margin-left: 2rem;
+    height: 2rem;
     filter: invert(100%) sepia(0%) saturate(7494%) hue-rotate(278deg) brightness(106%) contrast(101%);
 }
 
@@ -44,7 +46,6 @@ header img:hover {
     display: flex;
     gap: var(--padding-lg);
     align-items: center;
-    margin-right: 2rem;
 }
 
 .header-link {
@@ -54,6 +55,14 @@ header img:hover {
 .header-link:hover {
     cursor: pointer;
     border-bottom: 2px solid var(--primary-color); 
+}
+
+.menu-button {
+    display: none;
+}
+
+.menu-button:hover {
+    cursor: pointer;
 }
 
 /* MAIN */
@@ -112,6 +121,13 @@ header img:hover {
 
     .sidebar {
         display: none;
+    }
+
+
+    .menu-button {
+        display: flex;
+        align-items: center;
+        display: block;
     }
 
     .sidebar.active {
