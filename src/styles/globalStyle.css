@@ -114,6 +114,22 @@ header img:hover {
     width: 100%;
 }
 
+/* Footer */
+
+footer {
+    background-color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: var(--padding-md)
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+}
+
 @media (max-width: 900px) {
     .main {
         flex-direction: column;
