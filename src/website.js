@@ -5,4 +5,8 @@ function initializeWebsite() {
     loadHome();
 }
 
-export {initializeWebsite};
+function createProject(name) {
+    alert('testing');
+}
+
+export {initializeWebsite, createProject};

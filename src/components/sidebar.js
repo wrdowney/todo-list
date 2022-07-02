@@ -1,3 +1,5 @@
+import { createProject } from "../website";
+
 //build sidebar
 
 function buildSidebar() {
@@ -22,20 +24,7 @@ function buildSidebar() {
     weekContainer.appendChild(weekImg);
     weekContainer.appendChild(weekText);
 
-    let projects = document.createElement('div');
-    projects.classList.add("project-container");
-    let projectTitle = document.createElement('div');
-    projectTitle.innerHTML = "Projects";
-    let addProject = document.createElement("div");
-    addProject.classList.add("sidebar-container");
-    let addProjectImg = document.createElement("img")
-    addProjectImg.src = "/images/plus.svg";
-    let addProjectText = document.createElement("p");
-    addProjectText.innerHTML = "Add Project";
-    addProject.appendChild(addProjectImg);
-    addProject.appendChild(addProjectText);
-    projects.appendChild(projectTitle);
-    projects.appendChild(addProject);
+    let projects = buildProject();
 
     // menu drops down on click
     let menu = document.querySelector(".menu-button");
@@ -50,6 +39,64 @@ function buildSidebar() {
 
 
     return sidebar;
+}
+
+function buildProject() {
+    let projects = document.createElement('div');
+    projects.classList.add("project-container");
+    projects.innerHTML = 'Projects';
+    let addProject = document.createElement("div");
+    addProject.classList.add("sidebar-container");
+    let addProjectImg = document.createElement("img")
+    addProjectImg.src = "/images/plus.svg";
+    let addProjectText = document.createElement("p");
+    addProjectText.innerHTML = "Add Project";
+
+    //add project popup form
+    addProject.addEventListener("click", () => {
+        projects.innerHTML = "Projects";
+        let addProjectPopup = document.createElement("div");
+        addProjectPopup.classList.add("add-project-popup");
+        let popupInput = document.createElement("input");
+        popupInput.classList.add("popup-input");
+        popupInput.type = "text";
+        let addProjectPopupButtons = document.createElement("div");
+        addProjectPopupButtons.classList.add("add-project-popup-buttons");
+
+        //add button
+        let addButton = document.createElement("button");
+        addButton.innerHTML = "Add";
+        addButton.addEventListener("click", () => {
+            if(popupInput.value != "") {
+                createProject(popupInput.textContent);
+                updateProjects();
+            }
+            else {
+                alert("Please enter a project name");
+            }
+        })
+
+        //cancel button
+        let cancelButton = document.createElement("button");
+        cancelButton.innerHTML = "Cancel";
+        cancelButton.addEventListener("click", () => {
+            updateProjects();
+        })
+
+        addProjectPopupButtons.appendChild(addButton);
+        addProjectPopupButtons.appendChild(cancelButton);
+        addProjectPopup.appendChild(popupInput);
+        addProjectPopup.appendChild(addProjectPopupButtons);
+        projects.appendChild(addProjectPopup);
+    })
+    addProject.appendChild(addProjectImg);
+    addProject.appendChild(addProjectText);
+    projects.appendChild(addProject);
+    return projects
+}
+
+function updateProjects() {
+    
 }
 
 export {buildSidebar};
