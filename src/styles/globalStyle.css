@@ -91,6 +91,20 @@ header img:hover {
     padding: .5rem;
 }
 
+.add-task-button {
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    border-radius: .5rem;
+    padding: .5rem;
+}
+
+.add-task-button:hover {
+    cursor: pointer;
+    background-color: var(--sidebar-color-hover);
+}
+
 .sidebar-container:hover {
     cursor: pointer;
     background-color: var(--sidebar-color-hover);

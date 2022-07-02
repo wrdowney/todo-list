@@ -1,5 +1,5 @@
 //builds default home page of website
-import Project from './data/project.js';
+import Project from './data/Project.js';
 import {loadHome} from './pages/home.js';
 import {loadProjectPage} from './pages/projectPage.js';
 
@@ -43,4 +43,8 @@ function updateProjectsSidebar() {
     }
 }
 
-export {initializeWebsite, createProject, updateProjectsSidebar};
+function updateProjectPage(project) {
+    loadProjectPage(project);
+}
+
+export {initializeWebsite, createProject, updateProjectsSidebar, updateProjectPage};
