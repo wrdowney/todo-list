@@ -1,5 +1,6 @@
 import { buildHeader } from "../components/header";
 import { buildSidebar} from "../components/sidebar";
+import { buildFooter } from "../components/footer";
 
 function loadHome() {
     let content = document.querySelector("body");
@@ -11,6 +12,7 @@ function loadHome() {
     currentProject.classList.add("current-project");
     main.appendChild(currentProject);
     content.appendChild(main);
+    content.appendChild(buildFooter());
 }
 
 export { loadHome };
