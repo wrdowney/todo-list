@@ -8,11 +8,24 @@ function initializeWebsite() {
 }
 
 function createProject(name) {
-    projects.append(new Project(name));
+    projects.push(new Project(name));
 }
 
-function getProjects() {
-    return projects;
+function updateProjectsSidebar() {
+    let projectsList = document.querySelector(".projects-list");
+    projectsList.innerHTML = '';
+    let project = document.createElement("div");
+    for(let i = 0; i < projects.length; i++) {
+        project = document.createElement("div");
+        project.classList.add("sidebar-container");
+        let projectImg = document.createElement("img");
+        projectImg.src = "/images/project.svg";
+        let projectText = document.createElement("p");
+        projectText.innerHTML = projects[i].name;
+        project.appendChild(projectImg);
+        project.appendChild(projectText);
+        projectsList.appendChild(project);
+    }
 }
 
-export {initializeWebsite, createProject};
+export {initializeWebsite, createProject, updateProjectsSidebar};

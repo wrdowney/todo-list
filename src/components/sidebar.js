@@ -1,4 +1,4 @@
-import { createProject } from "../website";
+import { createProject, updateProjectsSidebar } from "../website";
 
 //build sidebar
 
@@ -24,8 +24,7 @@ function buildSidebar() {
     weekContainer.appendChild(weekImg);
     weekContainer.appendChild(weekText);
 
-    let projects = buildProject();
-
+    let projects = buildProjects();
     // menu drops down on click
     let menu = document.querySelector(".menu-button");
     menu.addEventListener("click", () => {
@@ -41,62 +40,85 @@ function buildSidebar() {
     return sidebar;
 }
 
-function buildProject() {
-    let projects = document.createElement('div');
-    projects.classList.add("project-container");
-    projects.innerHTML = 'Projects';
+function buildProjects() {
+    //project conainter
+    let projectsContainer = document.createElement('div');
+    projectsContainer.innerHTML = "Projects";
+
+    let addProjectPopup = document.createElement("div");
+    addProjectPopup.classList.add("add-project-popup");
+    let popupInput = document.createElement("input");
+    popupInput.classList.add("popup-input");
+    popupInput.type = "text";
+    let addProjectPopupButtons = document.createElement("div");
+    addProjectPopupButtons.classList.add("add-project-popup-buttons");
+    addProjectPopup.style = "display: none";
+
+    //add button
+    let addButton = document.createElement("button");
+    addButton.innerHTML = "Add";
+    addButton.addEventListener("click", () => {
+        if(popupInput.value != "") {
+            createProject(popupInput.value);
+            addProjectPopup.style = "display: none";
+            addProject.style = "display: flex";
+            updateProjectsSidebar();
+        }
+        else {
+            alert("Please enter a project name");
+        }
+    })
+
+    //cancel button
+    let cancelButton = document.createElement("button");
+    cancelButton.innerHTML = "Cancel";
+    cancelButton.addEventListener("click", () => {
+        addProjectPopup.style = "display: none";
+        addProject.style = "display: flex";
+    })
+    addProjectPopupButtons.appendChild(addButton);
+    addProjectPopupButtons.appendChild(cancelButton);
+    addProjectPopup.appendChild(popupInput);
+    addProjectPopup.appendChild(addProjectPopupButtons);
+    projectsContainer.appendChild(addProjectPopup);
+
+
+    let projectsList = document.createElement('div');
+    projectsList.classList.add("projects-list");
+    projectsContainer.appendChild(projectsList);
+    // let projects = getProjects();
+    // let project = document.createElement("div");
+    // for(let i = 0; i < projects.length; i++) {
+    //     project = document.createElement("div");
+    //     project.classList.add("sidebar-container");
+    //     let projectImg = document.createElement("img");
+    //     projectImg.src = "/images/project.svg";
+    //     let projectText = document.createElement("p");
+    //     projectText.innerHTML = projects[i].name;
+    //     project.appendChild(projectImg);
+    //     project.appendChild(projectText);
+    //     projectsContainer.appendChild(project);
+    // }
+
+    
+
+    //add project button
     let addProject = document.createElement("div");
     addProject.classList.add("sidebar-container");
     let addProjectImg = document.createElement("img")
     addProjectImg.src = "/images/plus.svg";
     let addProjectText = document.createElement("p");
     addProjectText.innerHTML = "Add Project";
-
-    //add project popup form
     addProject.addEventListener("click", () => {
-        projects.innerHTML = "Projects";
-        let addProjectPopup = document.createElement("div");
-        addProjectPopup.classList.add("add-project-popup");
-        let popupInput = document.createElement("input");
-        popupInput.classList.add("popup-input");
-        popupInput.type = "text";
-        let addProjectPopupButtons = document.createElement("div");
-        addProjectPopupButtons.classList.add("add-project-popup-buttons");
-
-        //add button
-        let addButton = document.createElement("button");
-        addButton.innerHTML = "Add";
-        addButton.addEventListener("click", () => {
-            if(popupInput.value != "") {
-                createProject(popupInput.textContent);
-                updateProjects();
-            }
-            else {
-                alert("Please enter a project name");
-            }
-        })
-
-        //cancel button
-        let cancelButton = document.createElement("button");
-        cancelButton.innerHTML = "Cancel";
-        cancelButton.addEventListener("click", () => {
-            updateProjects();
-        })
-
-        addProjectPopupButtons.appendChild(addButton);
-        addProjectPopupButtons.appendChild(cancelButton);
-        addProjectPopup.appendChild(popupInput);
-        addProjectPopup.appendChild(addProjectPopupButtons);
-        projects.appendChild(addProjectPopup);
+        addProject.style = "display: none";
+        addProjectPopup.style = "display: block";
+        //add button 
     })
     addProject.appendChild(addProjectImg);
     addProject.appendChild(addProjectText);
-    projects.appendChild(addProject);
-    return projects
-}
+    projectsContainer.appendChild(addProject);
 
-function updateProjects() {
-    
+    return projectsContainer;
 }
 
 export {buildSidebar};
