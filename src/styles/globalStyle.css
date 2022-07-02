@@ -110,6 +110,10 @@ header img:hover {
     margin-top: 2rem;
 }
 
+.project {
+    justify-content: space-between;
+}
+
 .current-project {
     width: 100%;
 }
