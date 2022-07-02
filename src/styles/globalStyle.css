@@ -122,7 +122,11 @@ footer {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    padding: var(--padding-sm)
+    padding: 0.125rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 footer p {
