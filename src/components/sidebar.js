@@ -86,21 +86,6 @@ function buildProjects() {
     let projectsList = document.createElement('div');
     projectsList.classList.add("projects-list");
     projectsContainer.appendChild(projectsList);
-    // let projects = getProjects();
-    // let project = document.createElement("div");
-    // for(let i = 0; i < projects.length; i++) {
-    //     project = document.createElement("div");
-    //     project.classList.add("sidebar-container");
-    //     let projectImg = document.createElement("img");
-    //     projectImg.src = "/images/project.svg";
-    //     let projectText = document.createElement("p");
-    //     projectText.innerHTML = projects[i].name;
-    //     project.appendChild(projectImg);
-    //     project.appendChild(projectText);
-    //     projectsContainer.appendChild(project);
-    // }
-
-    
 
     //add project button
     let addProject = document.createElement("div");

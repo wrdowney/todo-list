@@ -27,6 +27,7 @@ function updateProjectsSidebar() {
         projectText.innerHTML = projects[i].name;
         let projectRemove = document.createElement("img");
         projectRemove.src = "/images/close.svg";
+        projectRemove.style = "visibility: hidden";
         projectRemove.addEventListener("click", () => {
             projects.splice(i, 1);
             updateProjectsSidebar();
@@ -34,6 +35,14 @@ function updateProjectsSidebar() {
 
         project.addEventListener("click", () => {
             loadProjectPage(projects[i]);
+        });
+
+        project.addEventListener("mouseenter", () => {
+            projectRemove.style = "visibility: visible";
+        });
+        
+        project.addEventListener("mouseleave", () => {
+            projectRemove.style = "visibility: hidden";
         });
 
         project.appendChild(projectImg);
